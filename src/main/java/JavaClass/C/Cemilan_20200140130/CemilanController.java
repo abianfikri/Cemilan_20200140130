@@ -24,14 +24,16 @@ public class CemilanController {
 //    
     public String getHasil(HttpServletRequest data, Model model){
         
-        
+        // Membuat Parameter
         String getNama = data.getParameter("namaSayuran");
         int getHarga = Integer.parseInt(data.getParameter("hargaBarangPerKilo"));
         int getJumlah = Integer.parseInt(data.getParameter("jumlahBarang"));
         int getBayar = Integer.parseInt(data.getParameter("bayar"));
         
-        int compute = Proses.getdiskon(getHarga, getJumlah);
-        int diskon = Proses.getharga(getHarga, getJumlah);
+        // Commpute Diskon,Harga Setelah Diskon, Kembalian
+        int compute = Proses.getdiskon(getHarga, getJumlah); // Harga Setelah Diskon
+        int diskon = Proses.getharga(getHarga, getJumlah); // Diskonn
+        int kembalian = Proses.getKembalian(getBayar, compute); // Kembalian
         
         model.addAttribute("name", getNama);
         model.addAttribute("harga", ("Rp "+ getHarga));
@@ -39,10 +41,12 @@ public class CemilanController {
         model.addAttribute("total", ("Rp "+(getHarga*getJumlah)));
         model.addAttribute("diskon", "Rp "+compute);
         model.addAttribute("bayar", "Rp "+getBayar);
-        model.addAttribute("kembalian", "Rp "+(getBayar-compute));
+        model.addAttribute("kembalian", "Rp "+ kembalian);
         model.addAttribute("hsldiskon", diskon + " %");
         
         
         return "view";
     }
+    
+    
 }

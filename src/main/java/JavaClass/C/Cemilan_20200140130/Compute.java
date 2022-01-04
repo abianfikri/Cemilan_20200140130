@@ -10,6 +10,7 @@ package JavaClass.C.Cemilan_20200140130;
  * @author Abian
  */
 public class Compute {
+    // Harga Setelah Diskon
     public int getdiskon(int hargaBarang,int jumlah){
         int total = hargaBarang * jumlah;
         int diskon;
@@ -26,6 +27,7 @@ public class Compute {
         return diskon;
     }
     
+    // Diskon
     public int getharga(int hargaBarang,int jumlah){
         int total = hargaBarang * jumlah;
         int hasil_diskon;
@@ -40,5 +42,33 @@ public class Compute {
             hasil_diskon = 15;
         }
         return hasil_diskon;
+    }
+    
+    public int getKembalian(int getBayar,int Compute){
+        int kembalian = getBayar-Compute;
+        
+         int hasil;
+        
+        if(kembalian < Compute ){
+            hasil = getBayar - Compute;
+        }
+        else{
+            hasil = getBayar - Compute;
+        }
+        return hasil;
+    }
+    
+    public void getData(int getBayar,int Compute){
+        
+        int kembalian = getBayar - Compute;
+        
+        String hasil;
+        
+        if(kembalian < Compute){
+            hasil = "Uang anda tidak Cukup : " + kembalian;
+        }
+        else{
+            hasil = "Kembalian : " + kembalian;
+        }
     }
 }
